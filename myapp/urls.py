@@ -23,4 +23,7 @@ from myapp import  views as app_views
 #     url(r'^hello/', 'myapp.views.hello', name = 'hello'),
 # # ]
 from django.conf.urls import include,url
-urlpatterns = ( url(r'^$',app_views.hello, name= 'hello'), )
+urlpatterns = [ url(r'^hello/$', (app_views.hello)  ),
+                url(r'^morning/$',app_views.morning )]
+
+#url(r'^$',app_views.hello, name= 'hello'),
