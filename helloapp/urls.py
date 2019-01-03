@@ -20,7 +20,7 @@ admin.autodiscover()
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    #Surl(r'^$', include('admin.site.urls'), name='home'),
+    url(r'^$', admin.site.urls, name='home'),
     #url(r'^hello/', 'myapp.views.hello',name ='hello'),
     url(r'^myapp/',  include('myapp.urls')),
     # url(r'^morning/',include('myapp.urls')),

@@ -24,6 +24,10 @@ from myapp import  views as app_views
 # # ]
 from django.conf.urls import include,url
 urlpatterns = [ url(r'^hello/$', (app_views.hello)  ),
-                url(r'^morning/$',app_views.morning )]
+                url(r'^morning/$',app_views.morning ),
+                url(r'^$', app_views.home, name='home'),
+                url(r'article/(\d+)/$', app_views.view_article, name='article'),
+                url(r'article/(\d{2})/(\d{4})',app_views.view_article,name = 'article') ]
+
 
 #url(r'^$',app_views.hello, name= 'hello'),
