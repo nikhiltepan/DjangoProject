@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponse
+import datetime
 
 def hello (request ):
     text ="<h1>Welcome to My App</h1>" 
@@ -11,7 +12,9 @@ def morning (request):
 
 def home (request):
     # template=loader.get_template('myapp/Template/Hello.html')
-    return render (request, "index.html")
+    days=["Mon", "Tue", "Wed", "Thus", "Fri", "Sat", "Sun"]
+    today = datetime.datetime.now().date()
+    return render (request, "Hello.html",{"today": today, "days_of_week": days})
 
 
 # def home (request):

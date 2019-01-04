@@ -1,2 +1,18 @@
 <!DOCTYPE html>
 <h1>This is the first line of html file</h1>
+<html>
+    <body> Hellow world !!! <p>Today is {{today}}</p>
+    we are at
+    {% if today.day == 1 %}
+    the first day of the month.
+    {% elif today.day == 4%}
+    the forth day of the month.
+    {%endif%}
+
+    <p>
+    {% for day in days_of_week %}
+    {{day}}
+    </p>
+    {%endfor%}
+</body>
+</html>
