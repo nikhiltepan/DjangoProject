@@ -1,6 +1,7 @@
+from django.core.mail import send_mail,EmailMessage
 from myapp.models import Dreamreal
 from django.shortcuts import render
-from django.http import HttpResponse
+from django.http import HttpResponse,HttpResponseRedirect
 import datetime
 
 def hello (request ):
@@ -15,7 +16,8 @@ def home (request):
     # template=loader.get_template('myapp/Template/Hello.html')
     days=["Mon", "Tue", "Wed", "Thus", "Fri", "Sat", "Sun"]
     today = datetime.datetime.now().date()
-    return render (request, "Hello.html",{"today": today, "days_of_week": days})
+    # return render (request, "Hello.html",{"today": today, "days_of_week": days})
+    return HttpResponseRedirect("Http://Djangoproject.com")
 
 
 # def home (request):
@@ -70,6 +72,14 @@ def datamanupulation(request):
     for elt in qs:
         res+=elt.name +'<br>'
     return HttpResponse(res)
+
+def sendSimpleEmail(request, emailto):
+    # res=send_mail("Subject","Yoo bro","Nikhiltepan102@gmail.com",[emailto])
+    res = EmailMessage(subject="This is system generated mail do not reply.", body="bcbcbcbcbc", to=[emailto])
+    res.send()
+
+    return HttpResponse('<h1>Sent successfully<h1>')  #'%s'%res,
+
 
 # Create your views here.
 

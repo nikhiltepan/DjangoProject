@@ -27,7 +27,8 @@ urlpatterns = [ url(r'^hello/$', (app_views.hello)  ),
                 url(r'^morning/$',app_views.morning ),
                 url(r'^$', app_views.home, name='home'),
                 url(r'article/(\d+)/$', app_views.view_article, name='article'),
-                url(r'article/(\d{2})/(\d{4})',app_views.view_article,name = 'article') ]
+                url(r'article/(\d{2})/(\d{4})',app_views.view_article,name = 'article'),
+                url(r'^simpleemail/(?P<emailto>[\w.%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,4})/$',app_views.sendSimpleEmail,name='sendSimpleEmail') ]
 
 
 #url(r'^$',app_views.hello, name= 'hello'),
