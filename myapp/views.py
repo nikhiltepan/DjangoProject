@@ -1,3 +1,4 @@
+from myapp.models import Dreamreal
 from django.shortcuts import render
 from django.http import HttpResponse
 import datetime
@@ -29,6 +30,46 @@ def view_article(request, month , year):
     text ="Displaying the articles of %s/%s"%(year, month)
     return HttpResponse(text)
 
+def crudops(request):
+    dreamreal = Dreamreal(website= "www.polo.com", mail = "sorex@polo.com", name= "sorax", phonenumber= "9954875136")
+    dreamreal.save()
+
+    objects = Dreamreal.object.all()
+    res = 'printing all dreamreal entities in the DB : <br>'
+
+    for elt in objects:
+        res+=elt.name+"<br>"
+    
+    sorex = Dreamreal.objects.get(name="sorex")
+    res+='Printing one entry <br>'
+    res+=sorex.name
+
+    #deleting an entry 
+    res+='<br> Deleting an entry'
+    sorex.delete
+
+    #update 
+    dreamreal=Dreamreal(website = "www.polo.com", mail = "sorex@polo.com", 
+      name = "sorex", phonenumber = "002376970"   )
+    
+    dreamreal.save()
+    res+='updating entry <br>'
+
+    dreamreal =Dreamreal.objects.get(name='sorex')
+    dreamreal.name  = 'thierry'
+    dreamreal.save()
+
+    return HttpResponse(res)
+
+def datamanupulation(request):
+    res=''
+
+    #filtering data
+    qs = Dreamreal.objects.filter(name="paul")
+
+    for elt in qs:
+        res+=elt.name +'<br>'
+    return HttpResponse(res)
 
 # Create your views here.
 
