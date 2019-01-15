@@ -1,8 +1,12 @@
+from django.views.generic import TemplateView
 from django.core.mail import send_mail,EmailMessage
 from myapp.models import Dreamreal
 from django.shortcuts import render
 from django.http import HttpResponse,HttpResponseRedirect
 import datetime
+
+class StaticView(TemplateView):
+    template_name="Static.html"
 
 def hello (request ):
     text ="<h1>Welcome to My App</h1>" 

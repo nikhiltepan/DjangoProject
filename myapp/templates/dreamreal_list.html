@@ -1,0 +1,7 @@
+{% comment %} {% extends "Hello.html" %} {% endcomment %}
+{% block content %}
+Dreamreal:<p>
+{% for dr in object_list %}
+{{dr.name}}</p>
+{% endfor %}
+{% endblock  %}
