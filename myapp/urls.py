@@ -33,7 +33,9 @@ urlpatterns = [ url(r'^hello/$', (app_views.hello)  ),
                 url(r'article/(\d{2})/(\d{4})',app_views.view_article,name = 'article'),
                 url(r'^simpleemail/(?P<emailto>[\w.%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,4})/$',app_views.sendSimpleEmail,name='sendSimpleEmail'),
                 url(r'^static/$',TemplateView.as_view(template_name='Static.html')),
-                url(r'^dreamreals/',ListView.as_view(model=models.Dreamreal, template_name="dreamreal_list.html")) ]
+                url(r'^dreamreals/',ListView.as_view(model=models.Dreamreal, template_name="dreamreal_list.html")),
+                url(r'^connection/',TemplateView.as_view(template_name="login.html")),
+                url(r'^login/',app_views.login,name='login') ]
                 #  url(r'^static/$',app_views.StaticView.as_view()) ]
                 # url(r'^dreamreals/',ListView.as_view( template_name="dreamreal_list.html")),model=models.Dreamreal, context_object_name=  ]
 

@@ -1,9 +1,13 @@
-from django.views.generic import TemplateView
-from django.core.mail import send_mail,EmailMessage
-from myapp.models import Dreamreal
-from django.shortcuts import render
-from django.http import HttpResponse,HttpResponseRedirect
 import datetime
+
+from django.core.mail import EmailMessage, send_mail
+from django.http import HttpResponse, HttpResponseRedirect
+from django.shortcuts import render
+from django.views.generic import TemplateView
+
+from myapp.forms import LoginForm
+from myapp.models import Dreamreal
+
 
 class StaticView(TemplateView):
     template_name="Static.html"
@@ -22,6 +26,22 @@ def home (request):
     today = datetime.datetime.now().date()
     # return render (request, "Hello.html",{"today": today, "days_of_week": days})
     return HttpResponseRedirect("Http://Djangoproject.com")
+
+def login(request):
+    if request.method == 'POST':
+        MyLogInForm= LoginForm(request.POST)
+        if MyLogInForm.is_valid():
+            username=MyLogInForm.data['username']
+        else:
+            username=MyLogInForm.data['username']
+
+
+    
+    else:
+        MyLogInForm = LoginForm()
+
+    return render (request,'loggedin.html', {"username" :username})
+
 
 
 # def home (request):
@@ -86,4 +106,3 @@ def sendSimpleEmail(request, emailto):
 
 
 # Create your views here.
-
